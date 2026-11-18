@@ -21,8 +21,8 @@
   table { border-collapse: collapse; width: 100%; margin: 8px 0 14px; font-size: 15px; background: #fff; }
   td, th { border: 1px solid #e4e1ef; padding: 8px 10px; text-align: left; vertical-align: top; }
   th { background: #f5f3ff; }
-  .shots { display: grid; grid-template-columns: 1fr 300px; gap: 22px; align-items: start; }
-  @media (max-width: 720px) { .shots { grid-template-columns: 1fr; } h1 { font-size: 26px; } }
+  figure.phone img { max-width: 320px; }
+  @media (max-width: 720px) { h1 { font-size: 26px; } }
 </style>
 </head>
 <body>
@@ -54,16 +54,14 @@
   <img src="new-spawn-row.png" alt="The Live report switch on the New spawn window, set to On">
   <figcaption>1. Switched on per spawn when it is created (Ctrl+Shift+L), or later from the spawn's More actions menu.</figcaption>
 </figure>
-<div class="shots">
-  <figure>
+<figure>
     <img src="working-desktop.png" alt="The Live report while a turn is working, with an open problem drawn in full">
     <figcaption>2. While the turn runs: the step running right now with its time, and the agent's notes, newest first. The newest open problem is drawn in full, with its cause, its next step and an Output button for the failing command's lines.</figcaption>
   </figure>
-  <figure>
+  <figure class="phone">
     <img src="working-phone.png" alt="The same Live report on a phone">
     <figcaption>3. The same report on a phone.</figcaption>
   </figure>
-</div>
 <figure>
   <img src="finished-desktop.png" alt="A finished turn's Live report, opened to its three notes">
   <figcaption>4. After the turn the report folds to one line, "Live report · 3 notes", which opens to every note of that turn. Here a refused command was explained as a problem, then closed with a Fixed note.</figcaption>
