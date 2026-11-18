@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live report: what an imba agent is doing while it works</title>
+<style>
+  :root { color-scheme: light; }
+  body { font: 16px/1.55 -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #1f1d2b; background: #faf9fd; margin: 0; }
+  main { max-width: 860px; margin: 0 auto; padding: 40px 22px 64px; }
+  h1 { font-size: 32px; line-height: 1.2; margin: 0 0 6px; }
+  .sub { color: #6b6880; margin: 0 0 30px; font-size: 17px; }
+  h2 { font-size: 20px; margin: 34px 0 8px; color: #5b21b6; }
+  p { margin: 0 0 12px; }
+  ul { margin: 0 0 12px; padding-left: 22px; }
+  li { margin: 0 0 6px; }
+  figure { margin: 18px 0 26px; }
+  figure img { width: 100%; height: auto; border: 1px solid #ddd6fe; border-radius: 10px; display: block; background: #fff; }
+  figure.small img { max-width: 420px; }
+  figcaption { font-size: 14px; color: #55526a; margin-top: 8px; }
+  table { border-collapse: collapse; width: 100%; margin: 8px 0 14px; font-size: 15px; background: #fff; }
+  td, th { border: 1px solid #e4e1ef; padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: #f5f3ff; }
+  .shots { display: grid; grid-template-columns: 1fr 300px; gap: 22px; align-items: start; }
+  @media (max-width: 720px) { .shots { grid-template-columns: 1fr; } h1 { font-size: 26px; } }
+</style>
+</head>
+<body>
+<main>
+<h1>Live report</h1>
+<p class="sub">What an imba agent is doing while its turn is still running. Concept note, 18 November 2026.</p>
+
+<h2>The problem</h2>
+<p>While an agent works, imba shows one line: "working". A release that fails forty minutes into a turn stays unexplained until the agent finally replies. Nobody watching can tell a slow agent from a stuck one, or a careful one from one quietly retrying the same failure.</p>
+
+<h2>The idea</h2>
+<p>The agent writes short notes in its own words as it goes, and imba shows them in place of the "working" line. It is a story, not a step list: what was finished, what was found, what was decided, and what went wrong.</p>
+<table>
+  <tr><th>Note</th><th>What it says</th></tr>
+  <tr><td>Note</td><td>One or two sentences on something finished, found or decided.</td></tr>
+  <tr><td>Problem</td><td>What failed, why, what happens next, and the command's own failing lines.</td></tr>
+  <tr><td>Fixed</td><td>How the newest open problem was solved. It shows as a green Fixed row.</td></tr>
+</table>
+
+<h2>What keeps it honest</h2>
+<ul>
+  <li>A command that fails after running 30 seconds or longer is held: the agent cannot take its next step until it files a problem note explaining it.</li>
+  <li>An agent that has written nothing for 5 minutes is stopped once and asked for a note.</li>
+  <li>After two refusals in a row the work goes on anyway, so a broken note service never blocks an agent. The unexplained failure stays on the report.</li>
+</ul>
+
+<h2>How it looks</h2>
+<figure class="small">
+  <img src="new-spawn-row.png" alt="The Live report switch on the New spawn window, set to On">
+  <figcaption>1. Switched on per spawn when it is created (Ctrl+Shift+L), or later from the spawn's More actions menu.</figcaption>
+</figure>
+<div class="shots">
+  <figure>
+    <img src="working-desktop.png" alt="The Live report while a turn is working, with an open problem drawn in full">
+    <figcaption>2. While the turn runs: the step running right now with its time, and the agent's notes, newest first. The newest open problem is drawn in full, with its cause, its next step and an Output button for the failing command's lines.</figcaption>
+  </figure>
+  <figure>
+    <img src="working-phone.png" alt="The same Live report on a phone">
+    <figcaption>3. The same report on a phone.</figcaption>
+  </figure>
+</div>
+<figure>
+  <img src="finished-desktop.png" alt="A finished turn's Live report, opened to its three notes">
+  <figcaption>4. After the turn the report folds to one line, "Live report · 3 notes", which opens to every note of that turn. Here a refused command was explained as a problem, then closed with a Fixed note.</figcaption>
+</figure>
+
+<h2>Cost</h2>
+<p>Each note is one extra step for the agent. An hour-long turn is held at most twelve times for silence, plus once per failed command. It works for Claude Code and Codex agents alike, and it is off unless chosen.</p>
+</main>
+</body>
+</html>
