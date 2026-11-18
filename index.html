@@ -21,7 +21,7 @@
   table { border-collapse: collapse; width: 100%; margin: 8px 0 14px; font-size: 15px; background: #fff; }
   td, th { border: 1px solid #e4e1ef; padding: 8px 10px; text-align: left; vertical-align: top; }
   th { background: #f5f3ff; }
-  figure.phone img { max-width: 320px; }
+  figure.phone img { max-width: 360px; }
   @media (max-width: 720px) { h1 { font-size: 26px; } }
 </style>
 </head>
@@ -55,16 +55,20 @@
   <figcaption>1. Switched on per spawn when it is created (Ctrl+Shift+L), or later from the spawn's More actions menu.</figcaption>
 </figure>
 <figure>
-    <img src="working-desktop.png" alt="The Live report while a turn is working, with an open problem drawn in full">
-    <figcaption>2. While the turn runs: the step running right now with its time, and the agent's notes, newest first. The newest open problem is drawn in full, with its cause, its next step and an Output button for the failing command's lines.</figcaption>
-  </figure>
-  <figure class="phone">
-    <img src="working-phone.png" alt="The same Live report on a phone">
-    <figcaption>3. The same report on a phone.</figcaption>
-  </figure>
+  <img src="problem-desktop.png" alt="A spawn page while its turn runs, with the Live report showing an open problem, the failed command and its output">
+  <figcaption>2. A turn in progress. A command waited 32 seconds and failed (a demonstration failure, made on purpose), and the agent could not take another step until it explained it. The open problem shows its cause, the next step, the failed command with its time and exit code, and the command's output.</figcaption>
+</figure>
+<figure class="phone">
+  <img src="problem-phone.png" alt="The same open problem on a phone">
+  <figcaption>3. The same moment on a phone.</figcaption>
+</figure>
 <figure>
-  <img src="finished-desktop.png" alt="A finished turn's Live report, opened to its three notes">
-  <figcaption>4. After the turn the report folds to one line, "Live report · 3 notes", which opens to every note of that turn. Here a refused command was explained as a problem, then closed with a Fixed note.</figcaption>
+  <img src="fixed-desktop.png" alt="The Live report after the problem was closed with a Fixed note">
+  <figcaption>4. Once the problem is solved, a green Fixed note closes it, and the problem folds to its one-line headline.</figcaption>
+</figure>
+<figure>
+  <img src="finished-desktop.png" alt="A finished turn with its Live report opened under the State card">
+  <figcaption>5. After the turn the report folds to one line, "Live report · 3 notes", and opens to every note of that turn, between the State card and the agent's answer.</figcaption>
 </figure>
 
 <h2>Cost</h2>
